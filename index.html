@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lastfm-badge</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js">
+    </script>
+
+    <style>
+        #preview {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="m l left">
+        <header>
+            <div class="space"></div>
+            <a class="button extend square round" href="https://github.com/w3teal/lastfm-badge">
+                <i>code</i>
+                <span>Explore</span>
+            </a>
+        </header>
+        <a href="https://www.last.fm/api/tos">
+            <i>all_inclusive</i>
+            <span>Last.fm</span>
+        </a>
+        <a href="https://vercel.com/docs/limits">
+            <i>change_history</i>
+            <span>Vercel</span>
+        </a>
+    </nav>
+
+    <main class="responsive">
+
+        <div class="space"></div>
+
+        <div class="grid">
+
+            <div class="grid s12 m8 l8">
+
+                <article class="s12 m6 l4">
+                    <div class="field label suffix border">
+                        <select id="endpoint">
+                            <option value="last-played">Last Played</option>
+                            <option value="top-artist">Top Artist</option>
+                            <option value="top-track">Top Track</option>
+                            <option value="top-album">Top Album</option>
+                            <option value="top-tag">Top Tag</option>
+                        </select>
+                        <label>Type</label>
+                        <i>arrow_drop_down</i>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label border">
+                        <input id="user" value="rj" />
+                        <label>Username</label>
+                        <span class="helper">e.g. ligmatv</span>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label suffix border">
+                        <select id="sort" disabled>
+                            <option value="ALL">All Time</option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="180">Last 180 Days</option>
+                            <option value="365">Last 365 Days</option>
+                        </select>
+                        <label>Sort</label>
+                        <i>arrow_drop_down</i>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label border">
+                        <input type="number" id="rank" value="1" min="1" disabled />
+                        <label>Rank</label>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label suffix border">
+                        <select id="provider" disabled>
+                            <option value="shields">Shields.io</option>
+                            <option value="badgen">Badgen.net</option>
+                            <option value="badgers">Badgers.space</option>
+                        </select>
+                        <label>Badge provider</label>
+                        <i>arrow_drop_down</i>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label suffix border">
+                        <select id="style" disabled>
+                            <option value="flat">Flat</option>
+                            <option value="flat-square">Flat Square</option>
+                            <option value="plastic">Plastic</option>
+                            <option value="for-the-badge">For the Badge</option>
+                            <option value="social">Social</option>
+                        </select>
+                        <label>Style</label>
+                        <i>arrow_drop_down</i>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label border">
+                        <input id="color" value="red" disabled />
+                        <label>Color</label>
+                        <span class="helper">e.g. red, blue, 00ff99</span>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label border">
+                        <input id="icon" value="lastdotfm" disabled />
+                        <label>Icon</label>
+                        <span class="helper">e.g. google, spotify</span>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label border">
+                        <input id="label" disabled />
+                        <label>Label</label>
+                        <span class="helper">e.g. My artist this year</span>
+                    </div>
+                </article>
+
+                <article class="s12 m6 l4">
+                    <div class="field label suffix border">
+                        <select id="format" disabled>
+                            <option value="">Badge</option>
+                            <option value="json">JSON</option>
+                            <option value="txt">Plain text</option>
+                        </select>
+                        <label>Type</label>
+                        <i>arrow_drop_down</i>
+                    </div>
+                </article>
+
+                <article class="s12 transparent">
+                    <h5>Advanced Parameters</h5>
+                    <nav>
+                        <label class="checkbox"><input type="checkbox" id="toggleSort">
+                            <span>Sort</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleRank">
+                            <span>Rank</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleProvider">
+                            <span>Provider</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleStyle">
+                            <span>Style</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleColor">
+                            <span>Color</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleIcon">
+                            <span>Icon</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleLabel">
+                            <span>Label</span>
+                        </label>
+                        <label class="checkbox"><input type="checkbox" id="toggleFormat">
+                            <span>Type</span>
+                        </label>
+                    </nav>
+                </article>
+
+            </div>
+
+            <div class="s12 m4 l4">
+                <div class="padding center middle">
+                    <button class="responsive no-margin" id="generate">Generate URL</button>
+                    <div class="field border responsive">
+                        <input id="resultLink" readonly />
+                    </div>
+                    <img id="preview" alt="Badge preview" />
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const generateBtn = document.getElementById("generate");
+        const resultLink = document.getElementById("resultLink");
+        const preview = document.getElementById("preview");
+
+        const optionalFields = [{
+                toggle: "toggleSort",
+                input: "sort"
+            },
+            {
+                toggle: "toggleRank",
+                input: "rank"
+            },
+            {
+                toggle: "toggleProvider",
+                input: "provider"
+            },
+            {
+                toggle: "toggleStyle",
+                input: "style"
+            },
+            {
+                toggle: "toggleColor",
+                input: "color"
+            },
+            {
+                toggle: "toggleIcon",
+                input: "icon"
+            },
+            {
+                toggle: "toggleLabel",
+                input: "label"
+            },
+            {
+                toggle: "toggleFormat",
+                input: "format"
+            },
+        ];
+
+        optionalFields.forEach(({
+            toggle,
+            input
+        }) => {
+            const checkbox = document.getElementById(toggle);
+            const field = document.getElementById(input);
+            checkbox.addEventListener("change", () => {
+                field.disabled = !checkbox.checked;
+            });
+            field.disabled = !checkbox.checked;
+        });
+
+        generateBtn.addEventListener("click", () => {
+            const endpoint = document.getElementById("endpoint").value;
+            const user = document.getElementById("user").value || "RJ";
+            const params = new URLSearchParams({
+                user
+            });
+
+            optionalFields.forEach(({
+                toggle,
+                input
+            }) => {
+                const checkbox = document.getElementById(toggle);
+                const field = document.getElementById(input);
+                if (checkbox.checked && field.value) {
+                    params.append(input, field.value);
+                }
+            });
+
+            const url = `${window.location.origin}/${endpoint}?${params.toString()}`;
+            resultLink.value = url;
+
+            const format = document.getElementById("format").value;
+            if (format === "json" || format === "txt" || format === "text") {
+                preview.style.display = "none";
+            } else {
+                preview.src = url;
+                preview.style.display = "block";
+            }
+
+        });
+    </script>
+</body>
+
+</html>
