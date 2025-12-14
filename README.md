@@ -3,78 +3,34 @@ Generate a dynamic badge for the last played song on Last.fm. _Insipired from [a
 
 ## Features
 - [x] `user.getRecentTracks` (last-played)
-- [ ] `user.getTopAlbums` (top-album)
-- [ ] `user.getTopArtists` (top-artist)
-- [ ] `user.getTopTags` (top-tag)
-- [ ] `user.getTopTracks` (top-track)
-- [ ] `user.getWeeklyAlbumChart` (top-album-week)
-- [ ] `user.getWeeklyArtistChart` (top-artist-week)
-- [ ] `user.getWeeklyTrackChart` (top-track-week)
-
-### Last Played
-
-Displays the last played song scrobbled on Last.fm for a user.
-
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ)
+  - `sort`s: none
+- [x] `user.getTopAlbums` (top-album)
+  - `sort`s: `all-time`, `7`, `30`, `90`, `180`, `365`
+- [x] `user.getTopArtists` (top-artist)
+  - `sort`s: `all-time`, `7`, `30`, `90`, `180`, `365`
+- [x] `user.getTopTags` (top-tag)
+  - `sort`s: `all-time`, `7`, `30`, `90`, `180`, `365`
+- [x] `user.getTopTracks` (top-track)
+  - `sort`s: `all-time`, `7`, `30`, `90`, `180`, `365`
 
 
-## Configurations
+### Example
 
-You can see the configurations in https://github.com/LIGMATV/lastfm-badge/blob/main/index.js#L12-L17, there's also the default values for the configurations.
 
-### `user`
 ```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ)
+![](https://lastfm-badge.vercel.app/top-artist?user=ligmatv&sort=365&color=blue)
+            Domain                  Type       User         Sort     Color
+                                                           [Advanced]
 ```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ)
+![](https://lastfm-badge.vercel.app/top-artist?user=ligmatv&sort=365&color=blue)
 
-### `provider`
-Where the badge will be rendered, lightweight alternatives from Shields.io. (Not support `style` and `icon`.)
-- **Supported values**:
-  - `shields` (shields.io) **(Default)**
-  - `badgen` (badgen.net)
-  - `badgers` (badgers.space)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&provider=badgen)  
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&provider=badgers)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&provider=badgen)  
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&provider=badgers)
 
-### `style`
-> Only suppported in `shields` `provider`.
-- **Supported values**:
-  - `flat` **(Default)**
-  - `flat-square`
-  - `plastic`
-  - `for-the-badge`
-  - `social`
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&style=social)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&style=social)
+## GUI
 
-### `color`
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&color=green)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&color=green)
+Proudly using [BeerCSS](https://github.com/beercss/beercss). _[Demo](https://lastfm-badge.vercel.app/)_
 
-### `label`
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&label=What%20I%20listening%20now)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&label=What%20I%20listening%20now)
+<img width="1311" height="728" alt="image" src="https://github.com/user-attachments/assets/60725903-5ed4-4b08-b6c4-93f6442935f0" />
 
-### `icon`
-> Only suppported in `shields` `provider`, until Badgen.net & Badgers supporting Simple Icons.
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&icon=google)
-```
-![](http://lastfm-badge.vercel.app/last-played?user=RJ&icon=google)
 
 ## Building
 
