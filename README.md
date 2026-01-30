@@ -1,3 +1,7 @@
+> # This repository has been moved!
+> 
+> See this repository on [SourceHut](https://sourcehut.org/): https://git.sr.ht/~w3teal/lastfm-badge
+
 # lastfm-badge
 Generate a dynamic badge for the last played song on Last.fm. _Insipired from [abskmj/badges-lastfm](https://github.com/abskmj/badges-lastfm)_
 
